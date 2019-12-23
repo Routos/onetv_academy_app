@@ -11,7 +11,6 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf5f5f5),
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: Column(

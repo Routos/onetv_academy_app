@@ -21,7 +21,6 @@ buildTopPartHome() {
                   Padding(
                     padding:EdgeInsets.symmetric(horizontal: 25,),
                     child: Material(
-                      borderRadius: BorderRadius.circular(10),
                       elevation: 10,
                       child: TextField(
                         style: TextStyle(
@@ -31,6 +30,8 @@ buildTopPartHome() {
                             fontFamily: 'SultanNahia'
                         ),
                         decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
                             hintText: 'Searching Course',
                             hintStyle: TextStyle(
                                 fontStyle: FontStyle.normal,

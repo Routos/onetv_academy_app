@@ -12,7 +12,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   simple_animations: ^1.3.4
   flutter_svg: ^0.15.0
-  flutter_snake_navigationbar: ^0.2.0
+  provider: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +27,10 @@ flutter:
   assets:
   - assets/images/
   - assets/images/department/
+  - assets/images/imgList/
+
+
+
 
   fonts:
     - family: CM Sans Serif

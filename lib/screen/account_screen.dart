@@ -1,5 +1,8 @@
 import 'package:academy_app/screen/log_in_screen.dart';
+import 'package:academy_app/utilities/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserAccountScreen extends StatefulWidget {
   @override
@@ -9,8 +12,10 @@ class UserAccountScreen extends StatefulWidget {
 class _UserAccountScreenState extends State<UserAccountScreen> {
   @override
   Widget build(BuildContext context) {
+    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0.0,
         title: Text(
@@ -39,45 +44,77 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                   alignment: Alignment.center,
                   child: CircleAvatar(
                       radius: 45,
-                      backgroundImage: AssetImage('assets/images/profile.jpeg')),
+                      backgroundImage:
+                          AssetImage('assets/images/profile.jpeg')),
                 ),
-               SizedBox(height: 5,),
-                  Row(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children: <Widget>[
-                     FlatButton(
-                       shape: RoundedRectangleBorder(
-                           borderRadius: new BorderRadius.circular(20.0),
-                           side: BorderSide(color: Colors.red)
-                       ),
-                       color: Colors.white,
-                       textColor: Colors.red,
-                       padding: EdgeInsets.all(12.0),
-                       onPressed: () {},
-                       child: Text(
-                         "Change Password".toUpperCase(),
-                         style: TextStyle(
-                           fontSize: 14.0,
-                         ),
-                       ),
-                     ),
-                   ],
-                 ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(20.0),
+                          side: BorderSide(color: Colors.red)),
+                      color: Colors.white,
+                      textColor: Colors.red,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (BuildContext context) {
+                              return CupertinoAlertDialog(
+                                title: Text('Change Password'),
+                                content: Card(
+                                  child: Column(
+                                    children: <Widget>[
+                                      TextField(
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none),
+                                      ),
+                                      Divider(
+                                        color: Colors.black,
+                                      ),
+                                      TextField(
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  CupertinoDialogAction(
+                                    child: Text('Yes'),
+                                  ),
+                                  CupertinoDialogAction(
+                                    child: Text(
+                                      'No',
+                                    ),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                      child: Text(
+                        "Change Password".toUpperCase(),
+                        style: TextStyle(fontSize: 12.0, color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              padding: EdgeInsets.symmetric(horizontal: 25),
               child: Container(
-                height: 450,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(color: Colors.black26, blurRadius: 10)
-                    ],
-                    borderRadius: BorderRadius.circular(5)),
+                height: 400,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,12 +122,37 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            FlatButton(
+                              textColor: Colors.white,
+                              color: Theme.of(context).primaryColor,
+                              child: Text('Light'),
+                              onPressed: () {
+                                _themeChanger.setTheme(themeLight);
+                              },
+                            ),
+                            //this goes in as one of the children in our column
+                            FlatButton(
+                              textColor: Colors.white,
+                              color: Theme.of(context).primaryColor,
+                              child: Text('Dark'),
+                              onPressed: () {
+                                _themeChanger.setTheme(themDark);
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 40,),
                         Text(
                           'Oun Rout'.toUpperCase(),
                           style: TextStyle(
                               fontFamily: 'SultanNahia', fontSize: 30),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Text(
                           'rout.o@digitalsky.com.kh',
                           style: TextStyle(
@@ -123,8 +185,11 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => LoginScreen()));
                           },
                           child: Container(
                             width: 200,
@@ -132,14 +197,12 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 color: Theme.of(context).primaryColor,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black38,
-                                  blurRadius: 5,
-                                  offset: Offset(0.0,2.0)
-                                )
-                              ]
-                            ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black38,
+                                      blurRadius: 5,
+                                      offset: Offset(0.0, 2.0))
+                                ]),
                             child: Center(
                               child: Text(
                                 'LOG OUT',

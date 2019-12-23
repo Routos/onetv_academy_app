@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     FadeAnimation(
                       1,
                       Container(
-                        height: 300,
+                        height: 200,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/images/login.png'),

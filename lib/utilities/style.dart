@@ -19,3 +19,5 @@ final kBottomNavbar = TextStyle(
   fontSize: 15,
   fontFamily: 'AvenirBold',
 );
+
+final kAppbarTitle = TextStyle(color: Colors.white, fontWeight: FontWeight.bold);

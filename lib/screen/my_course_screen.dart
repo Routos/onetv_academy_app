@@ -1,3 +1,4 @@
+import 'package:academy_app/utilities/style.dart';
 import 'package:flutter/material.dart';
 
 class MyCourseScreen extends StatefulWidget {
@@ -15,22 +16,19 @@ class _MyCourseScreenState extends State<MyCourseScreen> {
           appBar: AppBar(
             title: Text(
               'My Course'.toUpperCase(),
-              style: TextStyle(color: Colors.black),
+              style: kAppbarTitle
             ),
-            backgroundColor: Colors.white,
             elevation: 0,
             bottom: TabBar(
               onTap: (index){
                 print(index);
               },
                 labelStyle: TextStyle(fontSize: 15),
-                unselectedLabelColor: Color(0xFFf50217),
                 indicatorPadding: EdgeInsets.only(left: 20, right: 20),
                 indicator: ShapeDecoration(
-                    color: Color(0xFFf50217),
                     shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        side: BorderSide(color: Color(0xFFf50217)))),
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color:Colors.white))),
                 tabs: [
                   Tab(
                     child: Align(

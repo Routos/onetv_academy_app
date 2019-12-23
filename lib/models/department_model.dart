@@ -2,10 +2,8 @@ class Department {
   final int id;
   final String name;
   final String imgUrl;
-
   Department({this.id, this.name, this.imgUrl});
 }
-
 List<Department> departmentList = [
   Department(
       id: 0, name: 'Content', imgUrl: 'assets/images/department/content.png'),
@@ -23,3 +21,11 @@ List<Department> departmentList = [
       name: 'Technical',
       imgUrl: 'assets/images/department/technical.png'),
 ];
+
+
+
+
+
+
+
+
