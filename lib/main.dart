@@ -1,5 +1,5 @@
 
-import 'package:academy_app/screen/main_screen.dart';
+import 'package:academy_app/screen/onboard_screen.dart';
 import 'package:academy_app/utilities/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +25,7 @@ class MaterialAppWithTheme extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme:theme.getTheme(),
-      home:MainScreenPage()
+      home:OnboardingScreen()
     );
   }
 }
