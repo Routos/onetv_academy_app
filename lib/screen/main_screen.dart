@@ -1,6 +1,7 @@
 import 'package:academy_app/screen/account_screen.dart';
 import 'package:academy_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'departmet_screen.dart';
 import 'inclass_screen.dart';
 import 'my_course_screen.dart';
@@ -26,14 +27,16 @@ class _MainScreenPageState extends State<MainScreenPage> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 20.0,
-        iconSize: 25,
-        selectedFontSize: 15,
-        unselectedFontSize: 12,
+        iconSize: 24,
+        selectedFontSize: 13,
+        unselectedFontSize: 11,
         selectedLabelStyle: TextStyle(
-          fontWeight: FontWeight.bold,
+          fontFamily: 'AvenirBold'
         ),
-        unselectedLabelStyle: TextStyle(),
-        selectedItemColor: Color(0xFFf50a1c),
+        unselectedLabelStyle: TextStyle(
+            fontFamily: 'AvenirBold'
+        ),
+        selectedItemColor: Color(0xFFd90919),
         unselectedItemColor: Color(0xFFd90919),
         currentIndex: _pageIndex,
         onTap: (index) {

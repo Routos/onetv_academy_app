@@ -23,11 +23,10 @@ class _MyCourseScreenState extends State<MyCourseScreen> {
               onTap: (index){
                 print(index);
               },
-                labelStyle: TextStyle(fontSize: 15),
-                indicatorPadding: EdgeInsets.only(left: 20, right: 20),
+                labelStyle: TextStyle(fontSize: 15,fontFamily: 'AvenirBold'),
                 indicator: ShapeDecoration(
                     shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(7),
                         side: BorderSide(color:Colors.white))),
                 tabs: [
                   Tab(
