@@ -49,21 +49,16 @@ _buildBody() {
               child: Card(
                   elevation: 3,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        height: 130,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage(departmentList[index].imgUrl))),
+                       child: Image.asset(departmentList[index].imgUrl,height: 120,width: 120,),
                       ),
+                      SizedBox(height: 5,),
                       Text(
                         departmentList[index].name,
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 19),
+                            fontWeight: FontWeight.w600, fontSize: 18,),
                       )
                     ],
                   ),
