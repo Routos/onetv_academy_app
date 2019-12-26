@@ -12,7 +12,6 @@ class UserAccountScreen extends StatefulWidget {
 class _UserAccountScreenState extends State<UserAccountScreen> {
   @override
   Widget build(BuildContext context) {
-    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -122,29 +121,24 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            FlatButton(
-                              textColor: Colors.white,
-                              color: Theme.of(context).primaryColor,
-                              child: Text('Light'),
-                              onPressed: () {
-                                _themeChanger.setTheme(themeLight);
-                              },
-                            ),
-                            //this goes in as one of the children in our column
-                            FlatButton(
-                              textColor: Colors.white,
-                              color: Theme.of(context).primaryColor,
-                              child: Text('Dark'),
-                              onPressed: () {
-                                _themeChanger.setTheme(themDark);
-                              },
-                            ),
-                          ],
+                        Consumer<ThemeChanger>(
+                            builder: (context, ThemeChanger notifier, child) =>
+                                SwitchListTile(
+                                  title: Text(
+                                    'Dark Mode',
+                                    style: TextStyle(
+                                      fontFamily: 'AvenirBold',
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  onChanged: (val) {
+                                    notifier.toggleTheme();
+                                  },
+                                  value: notifier.chooseTheme,
+                                )),
+                        SizedBox(
+                          height: 40,
                         ),
-                        SizedBox(height: 40,),
                         Text(
                           'Oun Rout'.toUpperCase(),
                           style: TextStyle(

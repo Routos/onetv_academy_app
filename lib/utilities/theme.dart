@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ThemeChanger with ChangeNotifier {
-  ThemeData _themeData;
-
-  ThemeChanger(this._themeData);
-
-  getTheme() => _themeData;
-
-  setTheme(ThemeData theme) {
-    _themeData = theme;
-    notifyListeners();
-  }
-}
-
-
-ThemeData themDark = ThemeData(
+ThemeData themeDark = ThemeData(
   brightness: Brightness.dark,
   primaryColor: Color(0xFFf50a1c),
   accentColor: Color(0xFFf50217),
@@ -24,3 +11,39 @@ ThemeData themeLight = ThemeData(
   primaryColor: Color(0xFFf50a1c),
   accentColor: Color(0xFFf50217),
 );
+
+class ThemeChanger with ChangeNotifier {
+  SharedPreferences prefs;
+  final String key = "theme";
+  bool _lightTheme;
+
+  bool get chooseTheme => _lightTheme;
+
+  ThemeChanger() {
+    _lightTheme = false;
+    _loadFromPrefs();
+  }
+
+  toggleTheme() {
+    _lightTheme = !_lightTheme;
+    _saveToPrefs();
+    notifyListeners();
+  }
+
+  _initPrefs() async {
+    if (prefs == null) {
+      prefs = await SharedPreferences.getInstance();
+    }
+  }
+
+  _loadFromPrefs() async {
+    _initPrefs();
+    _lightTheme =  prefs.getBool(key) ?? false;
+    notifyListeners();
+  }
+
+  _saveToPrefs() async{
+    await _initPrefs();
+    prefs.setBool(key, _lightTheme);
+  }
+}

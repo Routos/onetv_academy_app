@@ -1,4 +1,3 @@
-
 import 'package:academy_app/screen/main_screen.dart';
 import 'package:academy_app/utilities/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,23 +8,16 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider<ThemeChanger>(
-      builder: (_) => ThemeChanger(themeLight),
-      child: new MaterialAppWithTheme(),
-    );
-  }
-}
-
-class MaterialAppWithTheme extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeChanger>(context);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme:theme.getTheme(),
-      home:MainScreenPage()
+      create: (_) => ThemeChanger(),
+      child: Consumer<ThemeChanger>(
+        builder: (context, ThemeChanger notifier, chile) {
+          return MaterialApp(
+              theme: notifier.chooseTheme ? themeDark : themeLight,
+              debugShowCheckedModeBanner: false,
+              home: MainScreenPage());
+        },
+      ),
     );
   }
 }
