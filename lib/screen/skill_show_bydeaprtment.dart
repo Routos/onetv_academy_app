@@ -1,5 +1,6 @@
 import 'package:academy_app/models/department_model.dart';
 import 'package:academy_app/models/imgList.dart';
+import 'package:academy_app/screen/seemore_screen.dart';
 import 'package:flutter/material.dart';
 
 class SkillShowByDepartment extends StatefulWidget {
@@ -64,15 +65,25 @@ class CourseskillScrolling extends StatelessWidget {
         Row(
           children: <Widget>[
             Text(
-              skill[rowId].title,
+              "${skill[rowId].title} Skill",
               style: kTitleRow,
             ),
             Spacer(),
             Row(
               children: <Widget>[
-                Text(
-                  "See All",
-                  style: kTitleRow,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => SeemoreScreen(
+                                  skillId: rowId,
+                                )));
+                  },
+                  child: Text(
+                    "See All",
+                    style: kTitleRow,
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -89,14 +100,14 @@ class CourseskillScrolling extends StatelessWidget {
           height: 170,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: skillList.length,
+              itemCount: courseList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                        print(skillList[index].title);
+                        print(courseList[index].title);
                       },
                       child: Container(
                         margin: EdgeInsets.only(right: 10),
@@ -112,7 +123,7 @@ class CourseskillScrolling extends StatelessWidget {
                             ],
                             borderRadius: BorderRadius.circular(5),
                             image: DecorationImage(
-                                image: AssetImage(skillList[index].imgUrl),
+                                image: AssetImage(courseList[index].imgUrl),
                                 fit: BoxFit.cover)),
                       ),
                     ),
@@ -120,7 +131,7 @@ class CourseskillScrolling extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      '${skillList[index].title.substring(0, 15)} ...',
+                      '${courseList[index].title.substring(0, 15)} ...',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
