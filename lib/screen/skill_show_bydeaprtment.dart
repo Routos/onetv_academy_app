@@ -33,16 +33,13 @@ class _SkillShowByDepartmentState extends State<SkillShowByDepartment> {
             children: <Widget>[
               CourseskillScrolling(
                 kTitleRow: kTitleRow,
-                rowTitle: 'Functional Skill',
+                rowId: 0,
               ),
               CourseskillScrolling(
                 kTitleRow: kTitleRow,
-                rowTitle: 'Management Skill',
+                rowId: 1,
               ),
-              CourseskillScrolling(
-                kTitleRow: kTitleRow,
-                rowTitle: 'Conceptional Skill',
-              ),
+              CourseskillScrolling(kTitleRow: kTitleRow, rowId: 2),
             ],
           ),
         ),
@@ -53,9 +50,9 @@ class _SkillShowByDepartmentState extends State<SkillShowByDepartment> {
 
 class CourseskillScrolling extends StatelessWidget {
   final TextStyle kTitleRow;
-  final String rowTitle;
+  final int rowId;
 
-  CourseskillScrolling({this.kTitleRow, this.rowTitle});
+  CourseskillScrolling({this.kTitleRow, this.rowId});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +64,7 @@ class CourseskillScrolling extends StatelessWidget {
         Row(
           children: <Widget>[
             Text(
-              rowTitle,
+              skill[rowId].title,
               style: kTitleRow,
             ),
             Spacer(),
