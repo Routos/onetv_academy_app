@@ -19,6 +19,7 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
         elevation: 0.0,
         title: Text(
           'PROFILE',
+          textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
@@ -140,7 +141,7 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
                           height: 40,
                         ),
                         Text(
-                          'Oun Rout'.toUpperCase(),
+                          'Oun Routo'.toUpperCase(),
                           style: TextStyle(
                               fontFamily: 'SultanNahia', fontSize: 30),
                         ),

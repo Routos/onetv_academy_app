@@ -11,11 +11,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<ThemeChanger>(
       create: (_) => ThemeChanger(),
       child: Consumer<ThemeChanger>(
-        builder: (context, ThemeChanger notifier, chile) {
+        builder: (context, ThemeChanger notifier, child) {
           return MaterialApp(
-              theme: notifier.chooseTheme ? themeDark : themeLight,
-              debugShowCheckedModeBanner: false,
-              home: MainScreenPage());
+            debugShowCheckedModeBanner: false,
+            home: MainScreenPage(),
+            theme: notifier.chooseTheme ? themeDark : themeLight,
+          );
         },
       ),
     );

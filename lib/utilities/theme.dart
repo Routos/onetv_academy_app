@@ -16,9 +16,9 @@ class ThemeChanger with ChangeNotifier {
   SharedPreferences prefs;
   final String key = "theme";
   bool _lightTheme;
-
   bool get chooseTheme => _lightTheme;
 
+//is called when the app is loading
   ThemeChanger() {
     _lightTheme = false;
     _loadFromPrefs();
@@ -37,12 +37,12 @@ class ThemeChanger with ChangeNotifier {
   }
 
   _loadFromPrefs() async {
-    _initPrefs();
-    _lightTheme =  prefs.getBool(key) ?? false;
+    await _initPrefs();
+    _lightTheme = prefs.getBool(key) ?? false;
     notifyListeners();
   }
 
-  _saveToPrefs() async{
+  _saveToPrefs() async {
     await _initPrefs();
     prefs.setBool(key, _lightTheme);
   }
