@@ -1,4 +1,3 @@
-
 import 'package:academy_app/screen/main_screen.dart';
 import 'package:academy_app/screen/onboard_screen.dart';
 import 'package:flutter/material.dart';
