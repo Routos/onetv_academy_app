@@ -1,4 +1,3 @@
-import 'package:academy_app/screen/main_screen.dart';
 import 'package:academy_app/utilities/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
         builder: (context, ThemeChanger notifier, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: MainScreenPage(),
+            home: notifier.checkVisitor(),
             theme: notifier.chooseTheme ? themeDark : themeLight,
           );
         },
