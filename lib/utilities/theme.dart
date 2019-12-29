@@ -1,4 +1,5 @@
-import 'package:academy_app/screen/home_screen.dart';
+
+import 'package:academy_app/screen/main_screen.dart';
 import 'package:academy_app/screen/onboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,7 @@ class ThemeChanger with ChangeNotifier {
 
   Widget checkVisitor() {
     if (_isNew) {
-      return HomeScreenPage();
+      return MainScreenPage();
     } else {
       _saveVisitorToPrefs();
       return OnboardingScreen();

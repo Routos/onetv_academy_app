@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 class SeemoreScreen extends StatelessWidget {
   final int skillId;
+
   SeemoreScreen({this.skillId});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +28,7 @@ class SeemoreScreen extends StatelessWidget {
               itemCount: courseList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  margin:
-                  EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                  margin: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                   height: 160,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -35,9 +36,9 @@ class SeemoreScreen extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                            offset: Offset(2, 3),
+                            offset: Offset(3, 4),
                             color: Colors.black12,
-                            blurRadius: 2),
+                            blurRadius: 4),
                       ]),
                   child: Row(
                     children: <Widget>[
@@ -45,39 +46,41 @@ class SeemoreScreen extends StatelessWidget {
                         height: MediaQuery.of(context).size.height,
                         width: 120,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(3),bottomLeft: Radius.circular(3)),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(3),
+                                bottomLeft: Radius.circular(3)),
                             image: DecorationImage(
                                 image: AssetImage(courseList[index].imgUrl),
                                 fit: BoxFit.cover)),
                       ),
-                      Padding(
-                        padding:  EdgeInsets.symmetric(vertical: 20,horizontal: 15),
+                      Container(
+                        width: 200,
+                        margin:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                         child: Column(
                           children: <Widget>[
-                            Container(
-                              width:240,
-                              child: Text(
-                                courseList[index].title.length > 50 ? courseList[index].title.substring(1,50) : courseList[index].title,
-                                style: TextStyle(
+                            Text(
+                              courseList[index].title.length > 50
+                                  ? courseList[index].title.substring(1, 50)
+                                  : courseList[index].title,
+                              style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: 'CM Sans Serif',
                                   fontSize: 16,
-                                  height: 1.5
-                                ),
-                              ),
+                                  height: 1.5),
                             ),
-                            SizedBox(height: 5,),
-                            Container(
-                              width:240,
-                              child: Text(
-                                courseList[index].description.length > 150 ? courseList[index].description.substring(1,150) : courseList[index].description,
-                                style: TextStyle(
-                                    fontFamily: 'CM Sans Serif',
-                                    fontSize: 12,
-                                    height: 1.3,
-                                  color: Colors.black54
-                                ),
-                              ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              courseList[index].description.length > 120
+                                  ? "${courseList[index].description.substring(1, 120)}..."
+                                  : courseList[index].description,
+                              style: TextStyle(
+                                  fontFamily: 'CM Sans Serif',
+                                  fontSize: 12,
+                                  height: 1.3,
+                                  color: Colors.black54),
                             ),
                           ],
                         ),
